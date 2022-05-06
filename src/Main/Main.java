@@ -40,7 +40,7 @@ public class Main {
                     break;
                 case 1:
                     Scanner sc = new Scanner(System.in);
-                    System.out.println("Nhập tên nhân viên");
+                    System.out.println("Nhập tên nhân viên") ;
                     String ten = sc.nextLine();
 
                     sc = new Scanner(System.in);
