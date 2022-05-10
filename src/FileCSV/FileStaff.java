@@ -5,6 +5,7 @@ import Model.Staff;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,14 +24,19 @@ public class FileStaff {
     }
 
     // Chuyên ghi file
-    public static void readFromFile (List<Staff> staffList) throws IOException {
+    public static List<Staff>  readFromFile() throws IOException {
+        List<Staff> staffList = new ArrayList<>();
         File file = new File("staffout.csv");
         Scanner sc = new Scanner(file);
         while (sc.hasNext()) {
             String a = sc.nextLine();
+            if(a.equals("")){
+                break;
+            }
             System.out.println(a);
         }
         sc.close();
+        return staffList;
     }
 }
 
