@@ -45,13 +45,14 @@ public class ManageUser implements GeneralManage<User> {
 
     @Override
     public void edit(int id, User user) {
-        userList.set(findIndexById(id), user);
+
     }
 
     @Override
     public void delete(int id) {
-        userList.remove(findIndexById(id));
+
     }
+
 
     @Override
     public void findAll() {

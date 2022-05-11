@@ -1,7 +1,4 @@
 id,username,password,role,status
-1,nal,123,1,1
-2,dna,1,2,1
-3,nnn,1,2,1
-4,nana,1234,1,1
-123,son,code,1,1
 123,son,1227,1,1
+123,son,2712,1,1
+123,son,321,2,1

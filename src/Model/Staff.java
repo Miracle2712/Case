@@ -4,12 +4,12 @@ public class Staff {
     private String name;
     private String type;
     private String status;
-    private String salary;
+    private int salary;
 
     public Staff() {
     }
 
-    public Staff(String name, String type, String status, String salary) {
+    public Staff(String name, String type, String status, int salary) {
         this.name = name;
         this.type = type;
         this.status = status;
@@ -40,11 +40,11 @@ public class Staff {
         this.status = status;
     }
 
-    public String getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 

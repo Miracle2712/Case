@@ -47,9 +47,19 @@ public class StaffManagement implements Manage<Staff> {
     }
 
     @Override
-    public void findByNameFullTime() {
+    public void findByStatusFullTime() {
         for (int i = 0; i < staffList.size(); i++) {
             if (staffList.get(i).getType().contains("fulltime")) {
+                System.out.println(staffList.get(i));
+
+            }
+        }
+    }
+
+    @Override
+    public void findByStatusPartTime() {
+        for (int i = 0; i < staffList.size(); i++) {
+            if (staffList.get(i).getType().contains("parttime")) {
                 System.out.println(staffList.get(i));
 
             }
@@ -85,5 +95,26 @@ public class StaffManagement implements Manage<Staff> {
         }
 
     }
+
+    @Override
+    public void totalSalaryFullTime() {
+        int sum=0;
+        for (int i = 0; i <staffList.size() ; i++) {
+            if(staffList.get(i).getType().contains("FullTime")){
+                System.out.println(sum+=staffList.get(i).getSalary());
+            }
+        }
+    }
+
+    @Override
+    public void totalSalaryPartTime() {
+        int sum=0;
+        for (int i = 0; i <staffList.size() ; i++) {
+            if(staffList.get(i).getType().contains("PartTime")){
+                sum+=staffList.get(i).getSalary();
+            }
+        }
+    }
+
 
 }

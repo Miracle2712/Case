@@ -12,10 +12,12 @@ import StaffManage.StaffManagement;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MainLogin {
+public class Main {
 
     public static void main(String[] args) throws IOException  {
-        // write your code here
+
+        StaffManagement staffManagement = new StaffManagement();
+
         Scanner scanner = new Scanner(System.in);
         ManageUser manageUser = new ManageUser();
         ManageRole manageRole = new ManageRole();
@@ -41,24 +43,22 @@ public class MainLogin {
                             System.out.println("--------------MENU-----------------");
                             System.out.println("Vui long nhap lua chon");
                             System.out.println("" +
-                                    "0. Hiển thị tất cả nhân viên\n"+
-                                    "1. Thêm\n" +
-                                    "2. Tìm kiếm\n" +
-                                    "3. In ra danh sách nhân viên full time\n"+
-                                    "4. Sửa\n"+
-                                    "5. Xóa\n"+
-                                    "6. Đổi trạng thái\n"+
-                                    "7. Tính tổng lương của phòng kinh doanh\n"+
-                                    "8. ghi file\n"+
-                                    "9. đọc file\n"+
-                                    "10.Thoát"
-
-
-
+                                    "0.  Hiển thị tất cả nhân viên\n"+
+                                    "1.  Thêm\n" +
+                                    "2.  Tìm kiếm\n" +
+                                    "3.  In ra danh sách nhân viên fulltime\n"+
+                                    "4.  In ra danh sách nhân viên parttime\n"+
+                                    "5.  Sửa\n"+
+                                    "6.  Xóa\n"+
+                                    "7.  Đổi trạng thái\n"+
+                                    "8.  Lương của nhân viên fulltime\n"+
+                                    "9.  Lương của nhân viên parttime\n"+
+                                    "10. ghi file\n"+
+                                    "11  đọc file\n"+
+                                    "12. Thoát"
                             );
                             choice1= scanner.nextInt();
 
-                            StaffManagement staffManagement = new StaffManagement();
                             switch (choice1) {
                                 case 0:
                                     staffManagement.showStaffList();
@@ -78,23 +78,29 @@ public class MainLogin {
 
                                     sc= new Scanner(System.in);
                                     System.out.println("Nhập lương ");
-                                    String luong = sc.nextLine();
+                                    int luong = sc.nextInt();
 
-                                    Staff staff1 = new Staff(ten, kieuNhanVien, trangThai, luong);
+                                    Staff staff1 = new Staff(ten, kieuNhanVien, trangThai,luong);
                                     staffManagement.add(staff1);
+                                    staffManagement.showStaffList();
                                     break;
                                 case 2:
                                     sc = new Scanner(System.in);
-                                    System.out.println("Nhân viên cần tìm");
+                                    System.out.println("Nhập tên nhân viên cần tìm");
                                     String timNhanVien = sc.nextLine();
                                     staffManagement.findByName(timNhanVien);
                                     break;
                                 case 3:
-                                    System.out.println("Nhân viên full time cần tìm");
-                                    staffManagement.findByNameFullTime();
+                                    System.out.println("Danh sách nhân viên fulltime");
+                                    staffManagement.findByStatusFullTime();
                                     break;
 
                                 case 4:
+                                    System.out.println("Danh sách nhân viên parttime");
+                                    staffManagement.findByStatusPartTime();
+                                    break;
+
+                                case 5:
                                     sc = new Scanner(System.in);
                                     System.out.println("NHân viên cần sửa thông tin");
                                     String nhanVien = sc.nextLine();
@@ -113,7 +119,7 @@ public class MainLogin {
 
                                     sc= new Scanner(System.in);
                                     System.out.println("Nhập lương ");
-                                    luong = sc.nextLine();
+                                    luong = sc.nextInt();
 
                                     staffManagement.editByName(nhanVien, new Staff(ten, kieuNhanVien, trangThai, luong));
 
@@ -121,29 +127,34 @@ public class MainLogin {
                                     break;
 
 
-                                case 5:
+                                case 6:
                                     sc = new Scanner(System.in);
                                     System.out.println("Nhân viên cần xóa");
                                     String xoa = sc.nextLine();
                                     staffManagement.removeByName(xoa);
                                     break;
 
-                                case 6:
+                                case 7:
                                     sc = new Scanner(System.in);
                                     System.out.println("Nhập tên cần chuyển đổi");
                                     String update = sc.nextLine();
                                     staffManagement.updateStaffStatus(update);
                                     break;
-                                case 7:
-
                                 case 8:
-                                    FileStaff.writeToFile(staffManagement.getStaffList());
+                                    staffManagement.totalSalaryFullTime();
                                     break;
+
                                 case 9:
-                                    FileStaff.readFromFile();
+                                    staffManagement.totalSalaryPartTime();
                                     break;
                                 case 10:
-
+                                    FileStaff.writeToFile(staffManagement.getStaffList());
+                                    break;
+                                case 11:
+                                    FileStaff.readFromFile();
+                                    break;
+                                case 12:
+                                    break;
                             }
                         }
                     }

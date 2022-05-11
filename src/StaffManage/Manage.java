@@ -6,18 +6,21 @@ public interface Manage<P> {
 
     void showStaffList();
 
-
     int findByName(String name);
 
-    void findByNameFullTime();
+    void findByStatusFullTime();
+
+    void findByStatusPartTime();
 
     void editByName(String name, P p);
-
 
     void removeByName(String name);
 
     void updateStaffStatus(String name);
 
+    void totalSalaryFullTime();
+
+    void totalSalaryPartTime();
 
 
 
